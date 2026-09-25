@@ -1,594 +1,147 @@
-# \# AI Helpdesk Assistant
+# AI Helpdesk Assistant
 
-# 
+A Python-based helpdesk application that helps users troubleshoot common technical issues using a knowledge base and optional Gemini-powered responses.
 
-# An AI-powered helpdesk application that helps users troubleshoot common technical issues using a searchable knowledge base and optional Gemini-powered response generation.
+## Features
 
-# 
+- Interactive helpdesk interface
+- Knowledge-base based issue retrieval
+- Optional Google Gemini integration
+- MySQL database integration
+- Troubleshooting knowledge base
+- Offline fallback without an API key
+- Streamlit web interface
 
-# The application provides a simple Streamlit interface where users can describe their technical problem and receive a relevant solution from the project's knowledge base.
+## Tech Stack
 
-# 
+- Python
+- Streamlit
+- MySQL
+- SQL
+- Google Gemini API
+- Git & GitHub
 
-# \## Features
+## How It Works
 
-# 
+User Question
+↓
+Streamlit Interface
+↓
+Knowledge Base Retrieval
+↓
+Relevant Troubleshooting Information
+↓
+AI-generated response or knowledge-base response
 
-# \* 💬 Simple helpdesk chat interface
+The application searches the knowledge base for information related to the user's problem.
 
-# \* 🔎 Knowledge-base retrieval for common technical issues
+If a Gemini API key is configured, the retrieved information can be used to generate a more conversational response. Otherwise, the application uses the knowledge-base response directly.
 
-# \* 🤖 Optional AI-generated responses using Google Gemini
+## Supported Issues
 
-# \* 🗄️ MySQL database integration
+- Wi-Fi connectivity
+- VPN issues
+- Printer problems
+- Email synchronization
+- Forgotten passwords
+- Slow computers
+- Blue-screen errors
+- Software installation permissions
 
-# \* 📚 Pre-built troubleshooting articles
+## Project Structure
 
-# \* 🔐 Environment-variable based API key configuration
+ai-helpdesk-assistant/
+│
+├── data/
+│   └── knowledge_base/
+│
+├── src/
+│   ├── app.py
+│   ├── db.py
+│   ├── llm_client.py
+│   └── retrieval.py
+│
+├── schema.sql
+├── requirements.txt
+├── .env.example
+├── .gitignore
+└── README.md
 
-# \* ⚡ Offline fallback when an LLM API key is not configured
+## Setup
 
-# \* 🌐 Streamlit web interface
+### 1. Clone the repository
 
-# 
+git clone https://github.com/Sudiksha2507/ai-helpdesk-assistant.git
 
-# \## Tech Stack
+cd ai-helpdesk-assistant
 
-# 
+### 2. Install dependencies
 
-# | Technology            | Purpose                         |
+python -m pip install -r requirements.txt
 
-# | --------------------- | ------------------------------- |
+On Windows, you can also use:
 
-# | \*\*Python\*\*            | Application backend             |
+py -m pip install -r requirements.txt
 
-# | \*\*Streamlit\*\*         | Web interface                   |
+### 3. Set up MySQL
 
-# | \*\*MySQL\*\*             | Database                        |
+Open MySQL and run the schema.sql file.
 
-# | \*\*SQL\*\*               | Database schema and queries     |
+The application uses the database:
 
-# | \*\*Google Gemini API\*\* | Optional AI-generated responses |
+ai_helpdesk_assistant
 
-# | \*\*Git \& GitHub\*\*      | Version control                 |
+Configure your MySQL credentials in:
 
-# 
+src/db.py
 
-# \## How It Works
+Example:
 
-# 
+DB_CONFIG = {
+    "host": "localhost",
+    "user": "appuser",
+    "password": "apppass123",
+    "database": "ai_helpdesk_assistant"
+}
 
-# The application follows a simple helpdesk workflow:
+### 4. Optional Gemini API
 
-# 
+The application works without Gemini using the knowledge-base fallback.
 
-# ```text
+To enable AI-generated responses, set the GEMINI_API_KEY environment variable.
 
-# User Question
+Windows Command Prompt:
 
-# &#x20;    │
+set GEMINI_API_KEY=your-api-key
 
-# &#x20;    ▼
+Windows PowerShell:
 
-# Streamlit Interface
+$env:GEMINI_API_KEY="your-api-key"
 
-# &#x20;    │
+Never commit your actual API key to GitHub.
 
-# &#x20;    ▼
+### 5. Run the application
 
-# Knowledge Base Retrieval
+cd src
 
-# &#x20;    │
+python -m streamlit run app.py
 
-# &#x20;    ▼
+Open:
 
-# Relevant Troubleshooting Article
+http://localhost:8501
 
-# &#x20;    │
+## Future Improvements
 
-# &#x20;    ├── Gemini API configured
+- User authentication
+- Helpdesk ticket management
+- Conversation history
+- Admin dashboard
+- Larger knowledge base
+- Improved semantic search
+- Cloud deployment
 
-# &#x20;    │        │
+## Author
 
-# &#x20;    │        ▼
+Sudiksha Gopisetty
 
-# &#x20;    │   AI-generated response
-
-# &#x20;    │
-
-# &#x20;    └── Gemini API not configured
-
-# &#x20;             │
-
-# &#x20;             ▼
-
-# &#x20;      Knowledge-base response
-
-# ```
-
-# 
-
-# The retrieval component searches the available troubleshooting articles and identifies relevant information for the user's query.
-
-# 
-
-# When a Gemini API key is configured, the retrieved information can be used to generate a more natural response. Without an API key, the application continues to work using the knowledge-base fallback.
-
-# 
-
-# \## Project Structure
-
-# 
-
-# ```text
-
-# ai-helpdesk-assistant/
-
-# │
-
-# ├── data/
-
-# │   └── knowledge\_base/
-
-# │       ├── bluescreen\_error.txt
-
-# │       ├── email\_not\_syncing.txt
-
-# │       ├── forgot\_password.txt
-
-# │       ├── printer\_not\_printing.txt
-
-# │       ├── slow\_computer.txt
-
-# │       ├── software\_install\_permission.txt
-
-# │       ├── vpn\_issues.txt
-
-# │       └── wifi\_not\_connecting.txt
-
-# │
-
-# ├── src/
-
-# │   ├── app.py
-
-# │   ├── db.py
-
-# │   ├── llm\_client.py
-
-# │   └── retrieval.py
-
-# │
-
-# ├── .env.example
-
-# ├── .gitignore
-
-# ├── requirements.txt
-
-# ├── schema.sql
-
-# └── README.md
-
-# ```
-
-# 
-
-# \## Supported Issues
-
-# 
-
-# The included knowledge base currently contains troubleshooting information for issues such as:
-
-# 
-
-# \* Wi-Fi connectivity problems
-
-# \* VPN issues
-
-# \* Printer problems
-
-# \* Email synchronization
-
-# \* Forgotten passwords
-
-# \* Slow computers
-
-# \* Blue-screen errors
-
-# \* Software installation permissions
-
-# 
-
-# \## Requirements
-
-# 
-
-# Before running the project, install:
-
-# 
-
-# \* Python 3
-
-# \* MySQL Server
-
-# \* Git
-
-# 
-
-# \## Installation
-
-# 
-
-# \### 1. Clone the Repository
-
-# 
-
-# ```bash
-
-# git clone https://github.com/Sudiksha2507/ai-helpdesk-assistant.git
-
-# cd ai-helpdesk-assistant
-
-# ```
-
-# 
-
-# \### 2. Install Dependencies
-
-# 
-
-# ```bash
-
-# python -m pip install -r requirements.txt
-
-# ```
-
-# 
-
-# If `python` is not recognized on Windows, try:
-
-# 
-
-# ```bash
-
-# py -m pip install -r requirements.txt
-
-# ```
-
-# 
-
-# \## Database Setup
-
-# 
-
-# Make sure MySQL Server is running.
-
-# 
-
-# Open \*\*MySQL Command Line Client\*\* or \*\*MySQL Workbench\*\* and run the project schema:
-
-# 
-
-# ```sql
-
-# SOURCE /path/to/ai-helpdesk-assistant/schema.sql;
-
-# ```
-
-# 
-
-# The application uses the following database:
-
-# 
-
-# ```text
-
-# ai\_helpdesk\_assistant
-
-# ```
-
-# 
-
-# \### Database User
-
-# 
-
-# The application can use a MySQL user such as:
-
-# 
-
-# ```text
-
-# Username: appuser
-
-# Password: apppass123
-
-# ```
-
-# 
-
-# If the user does not already exist:
-
-# 
-
-# ```sql
-
-# CREATE USER 'appuser'@'localhost' IDENTIFIED BY 'apppass123';
-
-# ```
-
-# 
-
-# Grant database access:
-
-# 
-
-# ```sql
-
-# GRANT ALL PRIVILEGES
-
-# ON ai\_helpdesk\_assistant.\*
-
-# TO 'appuser'@'localhost';
-
-# 
-
-# FLUSH PRIVILEGES;
-
-# ```
-
-# 
-
-# > For a real deployment, use a strong password instead of the example credentials above.
-
-# 
-
-# \## Database Configuration
-
-# 
-
-# Open:
-
-# 
-
-# ```text
-
-# src/db.py
-
-# ```
-
-# 
-
-# Configure the database connection according to your local MySQL setup:
-
-# 
-
-# ```python
-
-# DB\_CONFIG = {
-
-# &#x20;   "host": "localhost",
-
-# &#x20;   "user": "appuser",
-
-# &#x20;   "password": "apppass123",
-
-# &#x20;   "database": "ai\_helpdesk\_assistant"
-
-# }
-
-# ```
-
-# 
-
-# \## Optional Gemini API Configuration
-
-# 
-
-# The application can run without a Gemini API key using the knowledge-base fallback.
-
-# 
-
-# To enable AI-generated responses, create an API key and set the `GEMINI\_API\_KEY` environment variable.
-
-# 
-
-# \### Windows Command Prompt
-
-# 
-
-# ```cmd
-
-# set GEMINI\_API\_KEY=your-api-key
-
-# ```
-
-# 
-
-# \### Windows PowerShell
-
-# 
-
-# ```powershell
-
-# $env:GEMINI\_API\_KEY="your-api-key"
-
-# ```
-
-# 
-
-# The project includes:
-
-# 
-
-# ```text
-
-# .env.example
-
-# ```
-
-# 
-
-# as a configuration reference.
-
-# 
-
-# \*\*Never commit your actual API key to GitHub.\*\*
-
-# 
-
-# \## Running the Application
-
-# 
-
-# Navigate to the `src` directory:
-
-# 
-
-# ```bash
-
-# cd src
-
-# ```
-
-# 
-
-# Start the Streamlit application:
-
-# 
-
-# ```bash
-
-# python -m streamlit run app.py
-
-# ```
-
-# 
-
-# The application will normally be available at:
-
-# 
-
-# ```text
-
-# http://localhost:8501
-
-# ```
-
-# 
-
-# \## Example Workflow
-
-# 
-
-# A user can enter a problem such as:
-
-# 
-
-# ```text
-
-# My Wi-Fi is connected but I cannot access the internet.
-
-# ```
-
-# 
-
-# The application searches the knowledge base for relevant troubleshooting information and returns an appropriate solution.
-
-# 
-
-# If Gemini is configured, the retrieved information can additionally be used to generate a conversational response.
-
-# 
-
-# \## Error Handling
-
-# 
-
-# The application is designed to continue functioning even when the optional Gemini API is not configured.
-
-# 
-
-# This allows the project to be tested locally using the included knowledge base without requiring an external AI service.
-
-# 
-
-# \## Future Improvements
-
-# 
-
-# Possible improvements include:
-
-# 
-
-# \* User authentication
-
-# \* Helpdesk ticket creation and tracking
-
-# \* Conversation history
-
-# \* Admin dashboard
-
-# \* Larger knowledge base
-
-# \* Better semantic search
-
-# \* Ticket status management
-
-# \* User feedback and solution ratings
-
-# \* Cloud deployment
-
-# \* More advanced AI-powered troubleshooting
-
-# 
-
-# \## Learning Outcomes
-
-# 
-
-# This project demonstrates practical experience with:
-
-# 
-
-# \* Python application development
-
-# \* Streamlit web applications
-
-# \* MySQL database connectivity
-
-# \* SQL database design
-
-# \* Retrieval-based information systems
-
-# \* API integration
-
-# \* Environment variables
-
-# \* Git and GitHub
-
-# \* Basic application architecture
-
-# 
-
-# \## Author
-
-# 
-
-# \*\*Sudiksha Gopisetty\*\*
-
-# 
-
-# GitHub: \[Sudiksha2507](https://github.com/Sudiksha2507)
-
-# 
-
-# \---
-
-# 
-
-# ⭐ If you found this project useful, feel free to explore the repository and build upon it.
-
-
-
+GitHub: https://github.com/Sudiksha2507
