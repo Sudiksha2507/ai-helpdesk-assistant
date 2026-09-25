@@ -1,0 +1,7 @@
+Title: Email Not Syncing
+Steps:
+1. Check your internet connection is active.
+2. Confirm you are logged in with the correct email account.
+3. Manually refresh the inbox by pulling down or clicking the refresh/sync button.
+4. Check if your mailbox storage is full, and delete old emails if needed.
+5. Remove and re-add the email account in the mail app settings.

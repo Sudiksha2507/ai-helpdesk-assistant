@@ -1,0 +1,7 @@
+Title: Printer Not Printing
+Steps:
+1. Check that the printer is powered on and connected to the same network.
+2. Make sure there is paper loaded and no paper jam.
+3. Open the print queue and cancel any stuck print jobs, then try again.
+4. Reinstall or update the printer driver from the manufacturer's website.
+5. Restart both the printer and your computer if the issue continues.

@@ -1,0 +1,8 @@
+Title: Software Installation Permission Denied
+Common phrasing: install error, cannot install, access denied, permission error while installing a program.
+Steps:
+1. Make sure you are logged in with an administrator account.
+2. Right-click the installer and choose "Run as administrator".
+3. Temporarily disable antivirus software, which can sometimes block installers.
+4. Check with your IT department if your account has restricted install permissions.
+5. Download the installer again in case the original file was corrupted.

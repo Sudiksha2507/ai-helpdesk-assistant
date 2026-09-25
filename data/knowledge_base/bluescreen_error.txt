@@ -1,0 +1,7 @@
+Title: Blue Screen Error (Windows)
+Steps:
+1. Note down the error code shown on the blue screen, if any.
+2. Restart the computer; a single blue screen is sometimes temporary.
+3. Check for and install any pending Windows updates.
+4. Update your graphics and chipset drivers from the manufacturer's website.
+5. If it keeps happening, run Windows Memory Diagnostic to check for faulty RAM.

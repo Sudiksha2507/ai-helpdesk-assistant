@@ -1,0 +1,7 @@
+Title: Computer Running Slow
+Steps:
+1. Close unused browser tabs and background applications.
+2. Check Task Manager for programs using high CPU or memory and close them.
+3. Restart your computer to clear temporary memory buildup.
+4. Free up disk space by deleting temporary files and emptying the recycle bin.
+5. Run a malware/antivirus scan if slowness persists after the above steps.

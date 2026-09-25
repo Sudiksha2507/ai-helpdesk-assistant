@@ -1,0 +1,7 @@
+Title: Wi-Fi Not Connecting
+Steps:
+1. Turn Wi-Fi off and back on from the settings menu.
+2. Restart your router by unplugging it for 10 seconds and plugging it back in.
+3. Forget the network and reconnect by entering the password again.
+4. Make sure airplane mode is switched off.
+5. If it still fails, restart your laptop and try connecting again.

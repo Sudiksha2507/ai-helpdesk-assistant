@@ -1,0 +1,7 @@
+Title: VPN Connection Issues
+Steps:
+1. Check that your internet connection is working without the VPN first.
+2. Make sure you are using the correct VPN server address and login credentials.
+3. Restart the VPN client application.
+4. Switch to a different VPN server location if the current one is unreachable.
+5. Reinstall the VPN client if the connection keeps dropping.
